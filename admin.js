@@ -73,7 +73,7 @@ document.getElementById("uploadButton").addEventListener("click", async () => {
   formData.append("file", file);
 
   try {
-    const response = await fetch("http://localhost:5000/admin/upload", {
+    const response = await fetch("https://adminbackend-axxb.onrender.com/admin/upload", {
       method: "POST",
       body: formData,
     });
