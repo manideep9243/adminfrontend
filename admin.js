@@ -78,13 +78,17 @@ document.getElementById("uploadButton").addEventListener("click", async () => {
       body: formData,
     });
 
+    if (!response.ok) {
+      throw new Error(`Server error: ${response.status}`);
+    }
+
     const result = await response.json();
-    document.getElementById("uploadStatus").innerText = result.message;
+    document.getElementById("uploadStatus").innerText = result.message || "File uploaded successfully!";
     document.getElementById("uploadStatus").style.color = "green";
-    console.log("Upload successful");
+    console.log("Upload successful:", result);
   } catch (error) {
     console.error("Error uploading file:", error);
-    document.getElementById("uploadStatus").innerText = "Failed to upload file.";
+    document.getElementById("uploadStatus").innerText = `Failed to upload file: ${error.message}`;
     document.getElementById("uploadStatus").style.color = "red";
   }
 });
