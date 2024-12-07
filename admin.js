@@ -14,6 +14,8 @@ document.getElementById("uploadButton").addEventListener("click", async () => {
     return;
   }
   formData.append("file", fileInput.files[0]);
+  uploadStatus.innerText = "Uploading...";
+  uploadStatus.style.color = "blue";
   try {
     const response = await fetch("https://adminbackend-axxb.onrender.com/admin/upload", {
       method: "POST",
